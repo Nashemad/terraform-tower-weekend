@@ -14,3 +14,11 @@ module "ec2" {
   instance_type = "t2.large"
   subnet_id = module.vpc.public_subnets_ids[1]
 }
+
+terraform {
+  backend "s3" {
+    bucket = "terraform-s3-bucket-statesfile"
+    key    = "terraform-today's-practice/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
